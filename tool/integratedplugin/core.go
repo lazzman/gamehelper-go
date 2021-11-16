@@ -36,6 +36,7 @@ type IntegratedPlugin interface {
 	BindWindow(hwnd int, display string, mouse string, keypad string, mode int) int
 	UnBindWindow() int
 	SetWindowState(hwnd, flag int) int
+	GetWindowState(hwnd, flag int) int
 	SetWindowSize(hwnd, width, height int) int
 	GetClientSize(hwnd int, width, height *int) int
 	FindWindow(class, title string) int
