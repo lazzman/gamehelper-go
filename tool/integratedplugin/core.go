@@ -2,9 +2,9 @@ package integratedplugin
 
 import (
 	_ "embed"
-	"gamehelper/tool/integratedplugin/dm"
-	"gamehelper/tool/integratedplugin/op"
-	"gamehelper/tool/integratedplugin/ts"
+	"gamehelper-go/tool/integratedplugin/dm"
+	"gamehelper-go/tool/integratedplugin/op"
+	"gamehelper-go/tool/integratedplugin/ts"
 	"io/ioutil"
 	"log"
 	"path/filepath"

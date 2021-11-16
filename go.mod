@@ -1,4 +1,4 @@
-module gamehelper
+module gamehelper-go
 
 go 1.17
 
