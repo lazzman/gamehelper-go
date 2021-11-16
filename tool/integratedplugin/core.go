@@ -1,9 +1,11 @@
 package integratedplugin
 
 import (
+	_ "embed"
 	"gamehelper/tool/integratedplugin/dm"
 	"gamehelper/tool/integratedplugin/op"
 	"gamehelper/tool/integratedplugin/ts"
+	"io/ioutil"
 	"log"
 	"path/filepath"
 	"strings"
@@ -14,6 +16,15 @@ const (
 	OP = "op" //OP插件（目前插件不完善）
 	TS = "ts" //天使插件（太老win10bug多）
 )
+
+//go:embed com/dm.dll
+var dmDll []byte
+
+//go:embed com/op.dll
+var opDll []byte
+
+//go:embed com/ts.dll
+var tsDll []byte
 
 type IntegratedPlugin interface {
 	RegModule(modulePath string, regCode string, verInfo string) error //注册模块
@@ -56,7 +67,11 @@ type IntegratedPlugin interface {
 func Instance(plug string, args ...string) IntegratedPlugin {
 	var iPlugin IntegratedPlugin
 	if strings.EqualFold(plug, DM) {
-		abs, err := filepath.Abs(filepath.Join("resource", "dm.dll"))
+		err := ioutil.WriteFile(filepath.Join("plugin.dll"), dmDll, 0777)
+		if err != nil {
+			log.Panicln("导出插件失败", err)
+		}
+		abs, err := filepath.Abs(filepath.Join("plugin.dll"))
 		if err != nil {
 			log.Panicln("综合插件路径错误", err)
 		}
@@ -66,7 +81,11 @@ func Instance(plug string, args ...string) IntegratedPlugin {
 			log.Panicln("综合插件初始化失败", err)
 		}
 	} else if strings.EqualFold(plug, OP) {
-		abs, err := filepath.Abs(filepath.Join("resource", "op.dll"))
+		err := ioutil.WriteFile(filepath.Join("plugin.dll"), opDll, 0777)
+		if err != nil {
+			log.Panicln("导出插件失败", err)
+		}
+		abs, err := filepath.Abs(filepath.Join("plugin.dll"))
 		if err != nil {
 			log.Panicln("综合插件路径错误", err)
 		}
@@ -76,7 +95,11 @@ func Instance(plug string, args ...string) IntegratedPlugin {
 			log.Panicln("综合插件初始化失败", err)
 		}
 	} else if strings.EqualFold(plug, TS) {
-		abs, err := filepath.Abs(filepath.Join("resource", "ts.dll"))
+		err := ioutil.WriteFile(filepath.Join("plugin.dll"), tsDll, 0777)
+		if err != nil {
+			log.Panicln("导出插件失败", err)
+		}
+		abs, err := filepath.Abs(filepath.Join("plugin.dll"))
 		if err != nil {
 			log.Panicln("综合插件路径错误", err)
 		}
