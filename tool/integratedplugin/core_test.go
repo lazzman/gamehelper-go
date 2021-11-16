@@ -120,14 +120,14 @@ func TestOps(t *testing.T) {
 
 func TestTheDivision2(t *testing.T) {
 	// 选择测试的插件
-	ip := Instance(TS)
+	ip := Instance(TS, "", "")
 	title := "Tom Clancy's The Division 2"
 	hwnd := ip.FindWindow("", title)
 	for ; hwnd <= 0; hwnd = ip.FindWindow("", title) {
 		time.Sleep(time.Second * 1)
 	}
 	// 绑定窗口
-	if ip.BindWindow(hwnd, "normal", "normal", "normal", 0) == 0 {
+	if ip.BindWindow(hwnd, "normal", "normal", "normal", 1) == 0 {
 		println("目标窗口绑定失败，脚本退出")
 	}
 	// 校验窗口大小
@@ -138,7 +138,7 @@ func TestTheDivision2(t *testing.T) {
 	}
 	// 插件配置
 	// 设置全局资源路径
-	ip.SetPath(filepath.Join("resource"))
+	ip.SetPath(filepath.Join(""))
 	// 关闭图片缓存
 	ip.EnablePicCache(0)
 	// 关闭输入法
@@ -146,7 +146,7 @@ func TestTheDivision2(t *testing.T) {
 	// 键盘延迟不能过小，否则会出现按键失灵
 	ip.SetKeypadDelay("normal", 30)
 	// 开启鼠键模拟
-	ip.EnableRealMouse(1, 10, 50)
+	ip.EnableRealMouse(1, 15, 50)
 	ip.EnableRealKeypad(0)
 	// 关闭鼠标加速
 	ip.EnableMouseAccuracy(0)
@@ -154,8 +154,10 @@ func TestTheDivision2(t *testing.T) {
 
 	ss := func() {
 		ip.SetWindowState(hwnd, 1)
-		ip.MoveTo(10, 10)
-		ip.MoveR(1000, 0) //天使插件在全境2中MoveR工作异常
+		//ip.MoveTo(10, 10)
+		//ip.LeftClick()
+		ip.MoveTo(100, 0)
+		//ip.MoveR(100, 0) //天使插件在全境2中MoveR工作异常
 	}
 
 	runtime.LockOSThread()

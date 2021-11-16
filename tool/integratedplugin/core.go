@@ -42,6 +42,7 @@ type IntegratedPlugin interface {
 	FindWindow(class, title string) int
 	FindWindowEx(parent int, class, title string) int
 	MoveWindow(hwnd, x, y int) int
+	ScreenToClient(hwnd int, x, y *int) int
 	SetKeypadDelay(types string, delay int) int
 	SetMouseDelay(types string, delay int) int
 	EnableIme(enable int) int
