@@ -12,7 +12,7 @@ import (
 // TestGameAimBooster http://www.aimbooster.com/
 func TestGameAimBooster(t *testing.T) {
 	// 选择测试的插件
-	iPlugin := Instance(DM)
+	iPlugin := Instance(TS)
 	// 绑定窗口
 	hwnd := iPlugin.FindWindow("", "AimBooster - Google Chrome")
 	if hwnd == 0 {
