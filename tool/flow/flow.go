@@ -3,7 +3,7 @@ package flow
 import (
 	"errors"
 	"fmt"
-	"gamehelper-go/utils"
+	"github.com/lazzman/gamehelper-go/utils"
 	"sync"
 )
 

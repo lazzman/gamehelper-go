@@ -1,8 +1,8 @@
 package integratedplugin
 
 import (
-	"gamehelper-go/tool/globalhotkey"
-	"gamehelper-go/utils"
+	"github.com/lazzman/gamehelper-go/tool/globalhotkey"
+	"github.com/lazzman/gamehelper-go/utils"
 	"path/filepath"
 	"runtime"
 	"testing"

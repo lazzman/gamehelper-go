@@ -1,4 +1,4 @@
-module gamehelper-go
+module github.com/lazzman/gamehelper-go
 
 go 1.17
 
