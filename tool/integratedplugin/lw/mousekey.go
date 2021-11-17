@@ -31,8 +31,9 @@ func (com *LeWan) KeyUpChar(keyStr string) int {
 }
 
 func (com *LeWan) KeyPressChar(keyStr string) int {
-	ret, _ := com.iDispatch.CallMethod("KeyPressStr", keyStr, 20)
-	return int(ret.Val)
+	com.KeyDownChar(keyStr)
+	com.KeyUpChar(keyStr)
+	return 1
 }
 
 // KeyPressStr 根据指定的字符串序列，依次按顺序按下其中的字符
