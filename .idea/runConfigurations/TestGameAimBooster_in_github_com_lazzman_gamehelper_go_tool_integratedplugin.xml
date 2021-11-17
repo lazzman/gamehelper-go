@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="TestGameAimBooster in github.com/lazzman/gamehelper-go/tool/integratedplugin" type="GoTestRunConfiguration" factoryName="Go Test" nameIsGenerated="true">
+    <module name="gamehelper-go" />
+    <working_directory value="$PROJECT_DIR$/" />
+    <root_directory value="$PROJECT_DIR$" />
+    <kind value="PACKAGE" />
+    <package value="github.com/lazzman/gamehelper-go/tool/integratedplugin" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$" />
+    <framework value="gotest" />
+    <pattern value="^\QTestGameAimBooster\E$" />
+    <method v="2" />
+  </configuration>
+</component>

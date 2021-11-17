@@ -110,6 +110,6 @@ func (com *TianShiPlug) MatchPicName(picName string) string {
 }
 
 func (com *TianShiPlug) SetPicPwd(pwd string) int {
-	ret, _ := com.iDispatch.CallMethod("SetExcludeRegion", pwd)
+	ret, _ := com.iDispatch.CallMethod("SetPicPwd", pwd)
 	return int(ret.Val)
 }

@@ -12,7 +12,7 @@ import (
 // TestGameAimBooster http://www.aimbooster.com/
 func TestGameAimBooster(t *testing.T) {
 	// 选择测试的插件
-	iPlugin := Instance(TS)
+	iPlugin := Instance(LW)
 	// 绑定窗口
 	hwnd := iPlugin.FindWindow("", "AimBooster - Google Chrome")
 	if hwnd == 0 {
@@ -71,7 +71,7 @@ func TestGameAimBooster(t *testing.T) {
 // TestOps http://www.aimbooster.com/
 func TestOps(t *testing.T) {
 	// 选择测试的插件
-	iPlugin := Instance(TS)
+	iPlugin := Instance(LW)
 	// 绑定窗口
 	hwnd := iPlugin.FindWindow("", "AimBooster - Google Chrome")
 	if hwnd == 0 {
@@ -91,19 +91,19 @@ func TestOps(t *testing.T) {
 	// 最大化窗口置顶 1920*1080分辨率
 	iPlugin.SetWindowSize(hwnd, 1920, 1080)
 	iPlugin.SetWindowState(hwnd, 1)
-	iPlugin.EnableRealMouse(1, 10, 50)
+	iPlugin.EnableRealMouse(1, 15, 50)
 	//保证大漠插件与天使插件鼠标MoveR效果相同需要将鼠标精准度开关关闭
 	//iPlugin.SetMouseSpeed(6)      // 保持移动速度是居中的位置
 	iPlugin.EnableMouseAccuracy(0) // 关闭精确度开关
 
 	ss := func() {
-		iPlugin.MoveTo(1000, 500)
-		iPlugin.MoveR(500, 0)
-		iPlugin.MoveR(0, 500)
-		iPlugin.MoveR(-500, 0)
-		iPlugin.MoveR(0, -500)
-		iPlugin.MoveR(-500, -500)
-		iPlugin.MoveR(500, 500)
+		//iPlugin.MoveTo(1000, 500)
+		iPlugin.MoveR(100, 0)
+		//iPlugin.MoveR(0, 500)
+		//iPlugin.MoveR(-500, 0)
+		//iPlugin.MoveR(0, -500)
+		//iPlugin.MoveR(-500, -500)
+		//iPlugin.MoveR(500, 500)
 	}
 
 	runtime.LockOSThread()

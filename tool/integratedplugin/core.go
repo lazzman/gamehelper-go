@@ -3,6 +3,7 @@ package integratedplugin
 import (
 	_ "embed"
 	"github.com/lazzman/gamehelper-go/tool/integratedplugin/dm"
+	"github.com/lazzman/gamehelper-go/tool/integratedplugin/lw"
 	"github.com/lazzman/gamehelper-go/tool/integratedplugin/op"
 	"github.com/lazzman/gamehelper-go/tool/integratedplugin/ts"
 	"io/ioutil"
@@ -13,8 +14,9 @@ import (
 
 const (
 	DM                = "dm" //大漠插件（推荐）
-	OP                = "op" //OP插件（目前插件不完善）
-	TS                = "ts" //天使插件（太老win10bug多）
+	OP                = "op" //OP插件（目前插件功能不完善，抄的天使插件没抄好）
+	TS                = "ts" //天使插件（部分功能不正常）
+	LW                = "lw" //乐玩插件
 	PLUGINDISPLAYNAME = "GameHelper.dll"
 )
 
@@ -26,6 +28,9 @@ var opDll []byte
 
 //go:embed com/ts.dll
 var tsDll []byte
+
+//go:embed com/lw.dll
+var lwDll []byte
 
 type IntegratedPlugin interface {
 	RegModule(modulePath string, regCode string, verInfo string) error //注册模块
@@ -111,6 +116,22 @@ func Instance(plug string, args ...string) IntegratedPlugin {
 		if err != nil {
 			log.Panicln("综合插件初始化失败", err)
 		}
+	} else if strings.EqualFold(plug, LW) {
+		err := ioutil.WriteFile(filepath.Join(PLUGINDISPLAYNAME), lwDll, 0777)
+		if err != nil {
+			log.Panicln("导出插件失败", err)
+		}
+		abs, err := filepath.Abs(filepath.Join(PLUGINDISPLAYNAME))
+		if err != nil {
+			log.Panicln("综合插件路径错误", err)
+		}
+		iPlugin = &lw.LeWan{}
+		err = iPlugin.RegModule(abs, "", "")
+		if err != nil {
+			log.Panicln("综合插件初始化失败", err)
+		}
+	} else {
+		log.Panicln("未找到对应的插件", plug)
 	}
 	return iPlugin
 }

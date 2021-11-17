@@ -133,7 +133,7 @@ func (com *TianShiPlug) SetSimMode(mode int) int {
 }
 
 func (com *TianShiPlug) WaitKey(vkCode, timeOut int) int {
-	ret, _ := com.iDispatch.CallMethod("SetSimMode", vkCode, timeOut)
+	ret, _ := com.iDispatch.CallMethod("WaitKey", vkCode, timeOut)
 	return int(ret.Val)
 }
 
