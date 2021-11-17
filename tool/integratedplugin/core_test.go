@@ -154,10 +154,10 @@ func TestTheDivision2(t *testing.T) {
 
 	ss := func() {
 		ip.SetWindowState(hwnd, 1)
-		//ip.MoveTo(10, 10)
+		ip.MoveTo(10, 10)
 		//ip.LeftClick()
-		ip.MoveTo(100, 0)
-		//ip.MoveR(100, 0) //天使插件在全境2中MoveR工作异常
+		//ip.MoveTo(100, 0)
+		ip.MoveR(1000, 0) //天使插件在全境2中MoveR工作异常
 	}
 
 	runtime.LockOSThread()
