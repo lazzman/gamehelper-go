@@ -2,6 +2,8 @@
 
 package lw
 
+import "github.com/lazzman/gamehelper-go/utils"
+
 func (com *LeWan) SetMouseSpeed(speed int) int {
 	return 1
 }
@@ -21,18 +23,18 @@ func (com *LeWan) KeyPress(vkCode int) int {
 }
 
 func (com *LeWan) KeyDownChar(keyStr string) int {
-	ret, _ := com.iDispatch.CallMethod("KeyDown", VKCODEMAP[keyStr])
-	return int(ret.Val)
+	return com.KeyDown(VKCODEMAP[keyStr])
 }
 
 func (com *LeWan) KeyUpChar(keyStr string) int {
-	ret, _ := com.iDispatch.CallMethod("KeyUp", VKCODEMAP[keyStr])
-	return int(ret.Val)
+	return com.KeyUp(VKCODEMAP[keyStr])
 }
 
 func (com *LeWan) KeyPressChar(keyStr string) int {
 	com.KeyDownChar(keyStr)
+	utils.DelayMills(20)
 	com.KeyUpChar(keyStr)
+	utils.DelayMills(10)
 	return 1
 }
 
@@ -75,6 +77,7 @@ func (com *LeWan) MiddleClick() int {
 	return int(ret.Val)
 }
 
+//MoveR
 func (com *LeWan) MoveR(rx, ry int) int {
 	ret, _ := com.iDispatch.CallMethod("MoveR", rx, ry)
 	return int(ret.Val)

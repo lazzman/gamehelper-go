@@ -146,7 +146,7 @@ func TestTheDivision2(t *testing.T) {
 	// 键盘延迟不能过小，否则会出现按键失灵
 	ip.SetKeypadDelay("normal", 30)
 	// 开启鼠键模拟
-	ip.EnableRealMouse(1, 15, 50)
+	ip.EnableRealMouse(0, 15, 50)
 	ip.EnableRealKeypad(0)
 	// 关闭鼠标加速
 	ip.EnableMouseAccuracy(0)
@@ -155,9 +155,27 @@ func TestTheDivision2(t *testing.T) {
 	ss := func() {
 		ip.SetWindowState(hwnd, 1)
 		ip.MoveTo(10, 10)
-		//ip.LeftClick()
-		//ip.MoveTo(100, 0)
-		ip.MoveR(1000, 0) //天使插件在全境2中MoveR工作异常
+		utils.DelayMills(100)
+		ip.LeftClick()
+		utils.DelayMills(200)
+		ip.MoveR(-440, 0)
+		ip.KeyPressChar("x")
+		utils.DelayMills(20)
+		ip.KeyPressChar("shift")
+		utils.DelayMills(3700)
+		ip.MoveR(-700, 0)
+		utils.DelayMills(100)
+		ip.MoveR(-700, 0)
+		utils.DelayMills(100)
+		ip.MoveR(-700, 0)
+		utils.DelayMills(100)
+		ip.MoveR(-50, 0)
+		utils.DelayMills(7200)
+		ip.KeyPressChar("x")
+		utils.DelayMills(10)
+		ip.KeyDownChar("f")
+		utils.DelayMills(3500)
+		ip.KeyUpChar("f")
 	}
 
 	runtime.LockOSThread()
