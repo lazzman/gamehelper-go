@@ -120,7 +120,7 @@ func TestOps(t *testing.T) {
 
 func TestTheDivision2(t *testing.T) {
 	// 选择测试的插件
-	ip := Instance(TS, "", "")
+	ip := Instance(LW, "", "")
 	title := "Tom Clancy's The Division 2"
 	hwnd := ip.FindWindow("", title)
 	for ; hwnd <= 0; hwnd = ip.FindWindow("", title) {
