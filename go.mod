@@ -7,4 +7,7 @@ require (
 	github.com/gonutz/w32/v2 v2.2.2
 )
 
-require golang.org/x/sys v0.0.0-20210809222454-d867a43fc93e // indirect
+require (
+	github.com/yusufpapurcu/wmi v1.2.2 // indirect
+	golang.org/x/sys v0.0.0-20210809222454-d867a43fc93e // indirect
+)
